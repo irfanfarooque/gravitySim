@@ -1,2 +1,5 @@
 # gravitySim
-<h1>hello there</h1>
+
+<<<<<<< HEAD
+
+# <h1>hello there</h1>
