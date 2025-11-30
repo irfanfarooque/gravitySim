@@ -1,39 +1,14 @@
+
+
+#define GLFW_INCLUDE_NONE
+#include "helper/fileIo.hpp"
+#include <GLFW/glfw3.h>
 #include <glad/glad.h>
 #include <iostream>
-
-#include <GLFW/glfw3.h>
 void print(const char *message) { std::cout << message << std::endl; }
 int main() {
-  const char *vertexShaderSource = R"(
-#version 330 core
-
-layout(location = 0) in vec3 aPos;      // vertex position
-layout(location = 1) in vec3 aColor;    // vertex color (optional)
-
-out vec3 vColor; // pass to fragment shader
-
-uniform mat4 model;
-uniform mat4 view;
-uniform mat4 projection;
-
-void main()
-{
-    vColor = aColor;
-    gl_Position = projection * view * model * vec4(aPos, 1.0);
-}
-  )";
-  const char *fragmentShaderSource = R"(
-
-#version 330 core
-
-in vec3 vColor;
-out vec4 FragColor;
-
-void main()
-{
-    FragColor = vec4(vColor, 1.0);
-}
-  )";
+  const char *vertexShaderSource = loadFileToHeap("./shaderSrc/main.vert");
+  const char *fragmentShaderSource = loadFileToHeap("./shaderSrc/main.frag");
   glfwInit();
   std::cout << "GLFW initialized successfully" << std::endl;
   glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -47,6 +22,7 @@ void main()
     return -1;
   }
   glfwMakeContextCurrent(window);
+  gladLoadGL();
 
   if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress)) {
     std::cout << "Failed to initialize GLAD" << std::endl;
@@ -62,12 +38,44 @@ void main()
   glShaderSource(vShader, 1, &vertexShaderSource, NULL);
   print("shader source set");
   glCompileShader(vShader);
-  std::cout << "Vertex shader compiled successfully" << std::endl;
+  GLint success;
+  // 1. Get the compilation status
+  glGetShaderiv(vShader, GL_COMPILE_STATUS, &success);
+
+  if (!success) { // If success is GL_FALSE (0)
+    // 2. Compilation failed, retrieve and print the error log
+    GLchar infoLog[512];
+    glGetShaderInfoLog(vShader, 512, NULL, infoLog);
+
+    std::cout << "ERROR::SHADER::VERTEX::COMPILATION_FAILED\n"
+              << infoLog << std::endl;
+    // Don't forget to delete the shader object if you plan to exit or retry
+    glDeleteShader(vShader);
+    return -1;
+  } else {
+    std::cout << "Vertex shader compiled successfully" << std::endl;
+  }
   GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
   glShaderSource(fShader, 1, &fragmentShaderSource, NULL);
   glCompileShader(fShader);
-  std::cout << "fragment Shaders compiled successfully" << std::endl;
+  glGetShaderiv(fShader, GL_COMPILE_STATUS, &success);
+
+  if (!success) { // If success is GL_FALSE (0)
+    // 2. Compilation failed, retrieve and print the error log
+    GLchar infoLog[512];
+    glGetShaderInfoLog(fShader, 512, NULL, infoLog);
+
+    std::cout << "ERROR::SHADER::FRAGMENT::COMPILATION_FAILED\n"
+              << infoLog << std::endl;
+    // Don't forget to delete the shader object if you plan to exit or retry
+    glDeleteShader(fShader);
+    return -1;
+  } else {
+    std::cout << "Fragment shader compiled successfully" << std::endl;
+  }
+
   GLuint shaderProgram = glCreateProgram();
+
   glAttachShader(shaderProgram, vShader);
   glAttachShader(shaderProgram, fShader);
   glLinkProgram(shaderProgram);
@@ -76,9 +84,24 @@ void main()
   glDeleteShader(vShader);
   glDeleteShader(fShader);
 
+  // shader has been created successfully
+  GLuint VBO, VAO; // vertex buffer object
+  glGenBuffers(1, &VBO);
+  glBindVertexArray(VAO);
+  glBindBuffer(GL_ARRAY_BUFFER, VBO);
+  glBufferData(GL_ARRAY_BUFFER, sizeof(vertexData), vertexData, GL_STATIC_DRAW);
+  glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(GLfloat),
+                        (GLvoid *)0);
+  glEnableVertexAttribArray(0);
+  glBindBuffer(GL_ARRAY_BUFFER, 0);
+  glBindVertexArray(0);
+
   while (!glfwWindowShouldClose(window)) {
     glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT);
+    glUseProgram(shaderProgram);
+    glBindVertexArray(VAO);
+    glDrawArrays(GL_TRIANGLES, 0, 3);
     glfwSwapBuffers(window);
     glfwPollEvents();
   }

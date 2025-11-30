@@ -7,13 +7,13 @@
 },
 {
   "directory": "/home/achu/Desktop/projects/gravitySim/build",
-  "command": "/usr/bin/c++  -I/home/achu/Desktop/projects/gravitySim/include -I/home/achu/Desktop/projects/gravitySim/./glad/include -std=gnu++11 -o CMakeFiles/a.out.dir/main.cpp.o -c /home/achu/Desktop/projects/gravitySim/main.cpp",
+  "command": "/usr/bin/c++  -I/home/achu/Desktop/projects/gravitySim/helper -I/home/achu/Desktop/projects/gravitySim/include -I/home/achu/Desktop/projects/gravitySim/./glad/include -std=gnu++11 -o CMakeFiles/a.out.dir/main.cpp.o -c /home/achu/Desktop/projects/gravitySim/main.cpp",
   "file": "/home/achu/Desktop/projects/gravitySim/main.cpp",
   "output": "CMakeFiles/a.out.dir/main.cpp.o"
 },
 {
   "directory": "/home/achu/Desktop/projects/gravitySim/build",
-  "command": "/usr/bin/cc  -I/home/achu/Desktop/projects/gravitySim/include -I/home/achu/Desktop/projects/gravitySim/./glad/include  -o CMakeFiles/a.out.dir/glad.c.o -c /home/achu/Desktop/projects/gravitySim/glad.c",
+  "command": "/usr/bin/cc  -I/home/achu/Desktop/projects/gravitySim/helper -I/home/achu/Desktop/projects/gravitySim/include -I/home/achu/Desktop/projects/gravitySim/./glad/include  -o CMakeFiles/a.out.dir/glad.c.o -c /home/achu/Desktop/projects/gravitySim/glad.c",
   "file": "/home/achu/Desktop/projects/gravitySim/glad.c",
   "output": "CMakeFiles/a.out.dir/glad.c.o"
 }

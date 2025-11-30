@@ -72,6 +72,7 @@ CMakeFiles/a.out.dir/glad.c.o: /home/achu/Desktop/projects/gravitySim/glad.c \
   /usr/lib/gcc/x86_64-redhat-linux/15/include/stdint.h
 
 CMakeFiles/a.out.dir/main.cpp.o: /home/achu/Desktop/projects/gravitySim/main.cpp \
+  /home/achu/Desktop/projects/gravitySim/helper/fileIo.hpp \
   /home/achu/Desktop/projects/gravitySim/include/KHR/khrplatform.h \
   /home/achu/Desktop/projects/gravitySim/include/glad/glad.h \
   /usr/include/GLFW/glfw3.h \
@@ -157,6 +158,7 @@ CMakeFiles/a.out.dir/main.cpp.o: /home/achu/Desktop/projects/gravitySim/main.cpp
   /usr/include/c++/15/bits/basic_string.tcc \
   /usr/include/c++/15/bits/char_traits.h \
   /usr/include/c++/15/bits/charconv.h \
+  /usr/include/c++/15/bits/codecvt.h \
   /usr/include/c++/15/bits/concept_check.h \
   /usr/include/c++/15/bits/cpp_type_traits.h \
   /usr/include/c++/15/bits/cxxabi_forced.h \
@@ -164,6 +166,7 @@ CMakeFiles/a.out.dir/main.cpp.o: /home/achu/Desktop/projects/gravitySim/main.cpp
   /usr/include/c++/15/bits/exception.h \
   /usr/include/c++/15/bits/exception_defines.h \
   /usr/include/c++/15/bits/exception_ptr.h \
+  /usr/include/c++/15/bits/fstream.tcc \
   /usr/include/c++/15/bits/functexcept.h \
   /usr/include/c++/15/bits/functional_hash.h \
   /usr/include/c++/15/bits/hash_bytes.h \
@@ -216,6 +219,7 @@ CMakeFiles/a.out.dir/main.cpp.o: /home/achu/Desktop/projects/gravitySim/main.cpp
   /usr/include/c++/15/ext/numeric_traits.h \
   /usr/include/c++/15/ext/string_conversions.h \
   /usr/include/c++/15/ext/type_traits.h \
+  /usr/include/c++/15/fstream \
   /usr/include/c++/15/initializer_list \
   /usr/include/c++/15/ios \
   /usr/include/c++/15/iosfwd \
@@ -230,8 +234,10 @@ CMakeFiles/a.out.dir/main.cpp.o: /home/achu/Desktop/projects/gravitySim/main.cpp
   /usr/include/c++/15/type_traits \
   /usr/include/c++/15/typeinfo \
   /usr/include/c++/15/x86_64-redhat-linux/bits/atomic_word.h \
+  /usr/include/c++/15/x86_64-redhat-linux/bits/basic_file.h \
   /usr/include/c++/15/x86_64-redhat-linux/bits/c++allocator.h \
   /usr/include/c++/15/x86_64-redhat-linux/bits/c++config.h \
+  /usr/include/c++/15/x86_64-redhat-linux/bits/c++io.h \
   /usr/include/c++/15/x86_64-redhat-linux/bits/c++locale.h \
   /usr/include/c++/15/x86_64-redhat-linux/bits/cpu_defines.h \
   /usr/include/c++/15/x86_64-redhat-linux/bits/ctype_base.h \
@@ -416,6 +422,8 @@ CMakeFiles/a.out.dir/main.cpp.o:
 
 /usr/include/c++/15/bits/ostream.tcc:
 
+/usr/include/c++/15/fstream:
+
 /usr/include/c++/15/bits/ostream.h:
 
 /usr/lib64/crt1.o:
@@ -458,6 +466,10 @@ CMakeFiles/a.out.dir/main.cpp.o:
 
 /usr/include/bits/types/struct_timeval.h:
 
+/usr/include/c++/15/bits/localefwd.h:
+
+/usr/include/bits/types/struct_timespec.h:
+
 /usr/include/bits/types/struct_FILE.h:
 
 /usr/include/asm/types.h:
@@ -474,6 +486,8 @@ CMakeFiles/a.out.dir/main.cpp.o:
 
 /usr/include/bits/atomic_wide_counter.h:
 
+/usr/include/c++/15/bits/fstream.tcc:
+
 /usr/include/linux/errno.h:
 
 /usr/include/c++/15/bits/invoke.h:
@@ -488,11 +502,15 @@ CMakeFiles/a.out.dir/main.cpp.o:
 
 /usr/include/c++/15/x86_64-redhat-linux/bits/gthr.h:
 
+/usr/include/c++/15/x86_64-redhat-linux/bits/basic_file.h:
+
 /usr/include/c++/15/type_traits:
 
 /usr/include/c++/15/bits/refwrap.h:
 
 /usr/include/bits/floatn.h:
+
+/home/achu/Desktop/projects/gravitySim/helper/fileIo.hpp:
 
 /lib64/libmvec.so.1:
 
@@ -533,6 +551,10 @@ CMakeFiles/a.out.dir/main.cpp.o:
 /usr/include/bits/timesize.h:
 
 /usr/include/asm/errno.h:
+
+/usr/include/c++/15/x86_64-redhat-linux/bits/c++io.h:
+
+/usr/include/c++/15/bits/codecvt.h:
 
 /usr/include/c++/15/istream:
 
@@ -606,6 +628,10 @@ CMakeFiles/a.out.dir/main.cpp.o:
 
 /usr/include/alloca.h:
 
+/usr/include/c++/15/bits/move.h:
+
+/usr/include/bits/stdint-least.h:
+
 /usr/lib64/libXau.so.6:
 
 /usr/include/asm-generic/bitsperlong.h:
@@ -667,6 +693,12 @@ CMakeFiles/a.out.dir/glad.c.o:
 /home/achu/Desktop/projects/gravitySim/main.cpp:
 
 /usr/include/asm-generic/errno.h:
+
+/usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o:
+
+/usr/include/c++/15/bits/memoryfwd.h:
+
+/usr/include/asm-generic/int-ll64.h:
 
 /usr/include/asm-generic/errno-base.h:
 
@@ -747,17 +779,3 @@ CMakeFiles/a.out.dir/glad.c.o:
 /usr/lib/gcc/x86_64-redhat-linux/15/include/stdint.h:
 
 /usr/include/c++/15/bits/istream.tcc:
-
-/usr/include/bits/types/struct_timespec.h:
-
-/usr/include/c++/15/bits/localefwd.h:
-
-/usr/lib/gcc/x86_64-redhat-linux/15/crtbegin.o:
-
-/usr/include/asm-generic/int-ll64.h:
-
-/usr/include/c++/15/bits/memoryfwd.h:
-
-/usr/include/bits/stdint-least.h:
-
-/usr/include/c++/15/bits/move.h:

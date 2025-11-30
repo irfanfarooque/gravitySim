@@ -32,7 +32,7 @@
 			{
 				"command" : 1,
 				"file" : 0,
-				"line" : 22,
+				"line" : 25,
 				"parent" : 0
 			},
 			{
@@ -54,6 +54,10 @@
 			],
 			"includes" : 
 			[
+				{
+					"backtrace" : 3,
+					"path" : "/home/achu/Desktop/projects/gravitySim/helper"
+				},
 				{
 					"backtrace" : 3,
 					"path" : "/home/achu/Desktop/projects/gravitySim/include"
@@ -80,6 +84,10 @@
 		{
 			"includes" : 
 			[
+				{
+					"backtrace" : 3,
+					"path" : "/home/achu/Desktop/projects/gravitySim/helper"
+				},
 				{
 					"backtrace" : 3,
 					"path" : "/home/achu/Desktop/projects/gravitySim/include"

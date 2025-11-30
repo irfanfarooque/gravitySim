@@ -10,7 +10,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 add_executable(a.out main.cpp glad.c)
 
 # Include directories
-target_include_directories(a.out PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_include_directories(a.out PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/helper
+        ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
 
 # Find and link required libraries
 find_package(OpenGL REQUIRED)

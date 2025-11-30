@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_DEFINES = 
 
-C_INCLUDES = -I/home/achu/Desktop/projects/gravitySim/include -I/home/achu/Desktop/projects/gravitySim/./glad/include
+C_INCLUDES = -I/home/achu/Desktop/projects/gravitySim/helper -I/home/achu/Desktop/projects/gravitySim/include -I/home/achu/Desktop/projects/gravitySim/./glad/include
 
 C_FLAGS = 
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/achu/Desktop/projects/gravitySim/include -I/home/achu/Desktop/projects/gravitySim/./glad/include
+CXX_INCLUDES = -I/home/achu/Desktop/projects/gravitySim/helper -I/home/achu/Desktop/projects/gravitySim/include -I/home/achu/Desktop/projects/gravitySim/./glad/include
 
 CXX_FLAGS = -std=gnu++11
 
