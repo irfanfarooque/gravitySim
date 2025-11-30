@@ -1,0 +1,4 @@
+/home/achu/Desktop/projects/gravitySim/CMakeFiles/a.out.dir
+/home/achu/Desktop/projects/gravitySim/CMakeFiles/glad.dir
+/home/achu/Desktop/projects/gravitySim/CMakeFiles/edit_cache.dir
+/home/achu/Desktop/projects/gravitySim/CMakeFiles/rebuild_cache.dir

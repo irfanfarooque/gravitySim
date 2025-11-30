@@ -1,37 +1,76 @@
-#include <GLFW/glfw3.h>
+#include <glad/glad.h>
 #include <iostream>
 
+#include <GLFW/glfw3.h>
 int main() {
-    // Initialize GLFW
-    if (!glfwInit()) {
-        std::cerr << "Failed to initialize GLFW" << std::endl;
-        return -1;
-    }
+  const char *vertexShaderSource = R"(
+#version 330 core
 
-    // Create a windowed mode window and its OpenGL context
-    GLFWwindow* window = glfwCreateWindow(800, 600, "GLFW Window", NULL, NULL);
-    if (!window) {
-        std::cerr << "Failed to create GLFW window" << std::endl;
-        glfwTerminate();
-        return -1;
-    }
+layout(location = 0) in vec3 aPos;      // vertex position
+layout(location = 1) in vec3 aColor;    // vertex color (optional)
 
-    // Make the window's context current
-    glfwMakeContextCurrent(window);
+out vec3 vColor; // pass to fragment shader
 
-    // Loop until the user closes the window
-    while (!glfwWindowShouldClose(window)) {
-        // Render here (e.g., clear the screen)
-        glClear(GL_COLOR_BUFFER_BIT);
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
 
-        // Swap front and back buffers
-        glfwSwapBuffers(window);
+void main()
+{
+    vColor = aColor;
+    gl_Position = projection * view * model * vec4(aPos, 1.0);
+}
+  )";
+  const char *fragmentShaderSource = R"(
 
-        // Poll for and process events
-        glfwPollEvents();
-    }
+#version 330 core
 
-    // Terminate GLFW
+in vec3 vColor;
+out vec4 FragColor;
+
+void main()
+{
+    FragColor = vec4(vColor, 1.0);
+}
+  )";
+  glfwInit();
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+  glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
+  glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+  GLfloat vertexData[] = {-1.0f, -1.0f, 0.0f, 1.0f, -1.0f,
+                          0.0f,  0.0f,  1.0f, 0.0f};
+  GLuint vShader = glCreateShader(GL_VERTEX_SHADER);
+  glShaderSource(vShader, 1, &vertexShaderSource, NULL);
+  glCompileShader(vShader);
+
+  GLuint fShader = glCreateShader(GL_FRAGMENT_SHADER);
+  glShaderSource(fShader, 1, &fragmentShaderSource, NULL);
+  glCompileShader(fShader);
+
+  GLuint shaderProgram = glCreateProgram();
+  glAttachShader(shaderProgram, vShader);
+  glAttachShader(shaderProgram, fShader);
+  glLinkProgram(shaderProgram);
+
+  // cleanup shaders as they are linked into program now and no longer necessary
+  glDeleteShader(vShader);
+  glDeleteShader(fShader);
+
+  GLFWwindow *window = glfwCreateWindow(800, 600, "OpenGL Window", NULL, NULL);
+  if (window == nullptr) {
+    std::cout << "Failed to create GLFW window" << std::endl;
     glfwTerminate();
-    return 0;
+    return -1;
+  }
+  glfwMakeContextCurrent(window);
+  glViewport(0, 0, 800, 600);
+  while (!glfwWindowShouldClose(window)) {
+    glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+    glClear(GL_COLOR_BUFFER_BIT);
+    glfwSwapBuffers(window);
+    glfwPollEvents();
+  }
+  glfwDestroyWindow(window);
+  glfwTerminate();
+  return 0;
 }
